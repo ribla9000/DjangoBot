@@ -1,0 +1,20 @@
+
+.submit#btn-send{
+    -webkit-appearance: none;
+        -moz-appearance: none;
+            appearance: none;
+    font-size: 20px;
+    color: white;
+    background-color: #264b5d;
+    border-radius: 10px ;
+}
+
+.submit#btn-send:hover{
+    color: #9175ff;
+    background-color: #2c5366;
+}
+
+.submit#btn-send:active{
+    color: #84838a;
+    background-color: #234454;
+}
