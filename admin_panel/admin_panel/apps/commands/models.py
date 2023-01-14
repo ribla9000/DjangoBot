@@ -6,48 +6,48 @@ from botpanel.models import *
 class AsksForFAQ(models.Model):
 	faq_name = models.TextField(max_length=48,
 								verbose_name='FAQ',
-								help_text='Write Some Question',
+								help_text='Какой-то вопрос',
 								)
 	faq_ask = models.TextField(verbose_name='ASK',
-							   help_text='...',
+							   help_text='Ответ',
 								)
 	def __str__(self):
 		return f'{self.faq_name}'
 	
 	class Meta:
 		verbose_name="FAQ"
-		verbose_name_plural = "FAQs"
+		verbose_name_plural = "FAQ"
 
 class ServicesList(models.Model):
-	service_name = models.TextField(verbose_name='Service',
-							   help_text='...',
+	service_name = models.TextField(verbose_name='Услуга',
+							   help_text='Имя услуги',
 								)
-	service_price = models.IntegerField(verbose_name='Price',
-							   help_text='how much?',
+	service_price = models.IntegerField(verbose_name='Цена',
+							   help_text='Цена за единицу',
 								)
 	service_description = models.TextField(verbose_name='Description',
-							   help_text='Trala-la',
+							   help_text='Опишите услугу',
 								)
 	
 	def __str__(self):
 		return f'{self.service_name}'
 	
 	class Meta:
-		verbose_name="Service"
-
+		verbose_name="Сервис"
+		verbose_name_plural='Сервисы'
 
 class AdvertisementsCalculator(models.Model):
-	advertisement_name = models.TextField(verbose_name='Ad name',
-							   			  help_text='...',
+	advertisement_name = models.TextField(verbose_name='Название рекламы',
+							   			  help_text='Гугл Адс',
 								)
-	advertisement_income = models.IntegerField(verbose_name='Income',
-							   				   help_text='how much?',
+	advertisement_income = models.IntegerField(verbose_name='Вложения',
+							   				   help_text='Сколько',
 								)
-	advertisement_expenditure = models.IntegerField(verbose_name='Expenditure',
-							   						help_text='how much?',
+	advertisement_expenditure = models.IntegerField(verbose_name='Потери',
+							   						help_text='Сколько',
 								)
-	advertisement_profit = models.IntegerField(verbose_name='Profit',
-							   				   help_text='how much? in %',
+	advertisement_profit = models.IntegerField(verbose_name='Доход',
+							   				   help_text='Результат в %, оставьте это поле пустым',
 							   				   blank=True,
 								)
 
@@ -61,52 +61,54 @@ class AdvertisementsCalculator(models.Model):
 		return f'{self.advertisement_name}'
 	
 	class Meta:
-		verbose_name="Advertisement Calculator"
+		verbose_name="Калькулятор рекламы"
+		verbose_name_plural='Калькулятор рекламы'
 
-class CompanyPosts(models.Model):
-	person_post = models.TextField(verbose_name='Post in company',
-									help_text='Courier/CEO/Head',
-								)
+# class CompanyPosts(models.Model):
+# 	person_post = models.TextField(verbose_name='Должность',
+# 									help_text='Курьер/CEO/Глава',
+# 								)
 
-	def __str__(self):
-		return f'{self.person_post}'
+# 	def __str__(self):
+# 		return f'{self.person_post}'
 
-	class Meta:
-		verbose_name="POST IN COMPANY"
+# 	class Meta:
+# 		verbose_name="Должность"
+# 		verbose_name_plural = 'Должности'
 
-class StaffinCompany(models.Model):
-	person_name = models.TextField(verbose_name='Person name',
-							   	   help_text='Alex Wednesday jr.',
-								)
-	telegram_userid = models.IntegerField(verbose_name='ID',
-											blank=False,
-											default=None,
-								)
-	telegram_nickname = models.TextField(verbose_name='Telegram Nickname',
-							   	   help_text='Skinny Jeans',
-							   	   default=None,
-								)
-	telegram_username = models.TextField(verbose_name='Telegram Username',
-							   	   help_text='@SomeBody',
-							   	   default=None,
-								)
-	person_post = models.ForeignKey(CompanyPosts, on_delete=models.DO_NOTHING, 
-										verbose_name='Post in company',	
-										default=None)
-	person_payment = models.IntegerField(verbose_name='Person payment',
-							   			 help_text='how much?',
-							   			 blank=False,
-								)
+# class StaffinCompany(models.Model):
+# 	person_name = models.TextField(verbose_name='Имя человека',
+# 							   	   help_text='Alex Wednesday jr.',
+# 								)
+# 	telegram_userid = models.IntegerField(verbose_name='ID телеграмма',
+# 											blank=False,
+# 											default=None,
+# 								)
+# 	telegram_nickname = models.TextField(verbose_name='Telegram никнейм',
+# 							   	   help_text='Skinny Jeans',
+# 							   	   default=None,
+# 								)
+# 	telegram_username = models.TextField(verbose_name='Telegram имя',
+# 							   	   help_text='@SomeBody',
+# 							   	   default=None,
+# 								)
+# 	person_post = models.ForeignKey(CompanyPosts, on_delete=models.DO_NOTHING, 
+# 										verbose_name='Должность',	
+# 										default=None)
+# 	person_payment = models.IntegerField(verbose_name='Зарплата',
+# 							   			 blank=False,
+# 								)
 
-	def __str__(self):
-		return f'{self.person_name}'
+# 	def __str__(self):
+# 		return f'{self.person_name}'
 	
-	class Meta:
-		verbose_name="Staffs"
 
 class ClientsReviews(models.Model):
-	review_text = models.TextField(verbose_name='Review Text')
-	review_user = models.TextField(verbose_name='User', help_text='Who?', null=True)
+	review_text = models.TextField(verbose_name='Отзывы')
+	review_user = models.TextField(verbose_name='Пользователь который оставил',null=True)
+	review_username = models.TextField(verbose_name='Пользователь который оставил',null=True, blank=False)
+	review_chat_id = models.IntegerField(verbose_name='ID пользователя', default=0)
 
 	class Meta:
-		verbose_name="Client Review"
+		verbose_name="Отзыв пользователя"
+		verbose_name_plural='Отзыв пользователя'

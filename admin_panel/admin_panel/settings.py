@@ -17,14 +17,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = os.path.dirname(__file__)
 sys.path.insert(0, os.path.join(PROJECT_ROOT, 'apps'))
 os.environ["DJANGO_ALLOW_ASYNC_UNSAFE"] = "true"
-
-
+    
+        
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$&c$zona=%2z830^wkfh%en90nzn8_(1dp-+x2#@*+l7s3hca4'
+SECRET_KEY = 'YOUR SECRET KEY'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'botpanel',
-    'commands',
+    'commands', 
     'manager',
 
 ]
@@ -137,8 +137,8 @@ STATICFILES_DIRS = [
 
 #  Bot's options
 
-TOKEN_BOT = '123'
-TOKEN_MANAGER_BOT = '123'
+TOKEN_BOT = 'YOUR TOKEN NUMBER1'
+TOKEN_MANAGER_BOT = 'YOUR TOKEN NUMBER2'
 # PROXY_URL = 'https://telegg.ru/orig/bot'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
